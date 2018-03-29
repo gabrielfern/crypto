@@ -5,6 +5,12 @@ int main(int argc, char** argv)
 {
     using namespace std;
 
+    if (argc < 3)
+    {
+        cerr << "Missing arguments\n";
+        return 1;
+    }
+
     fstream key(argv[1]);
     fstream input(argv[2]);
     fstream output;
