@@ -14,7 +14,7 @@ int main(int argc, char** argv)
     fstream key(argv[1]);
     fstream input(argv[2]);
     fstream output;
-    if (argc < 4)
+    if (argc < 4 || string(argv[2]) == argv[3])
         output = fstream(argv[2]);
     else
         output = fstream(argv[3], output.out);
@@ -25,7 +25,7 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    char k, b = 0;
+    char k = 0, b;
     while (input.get(b))
     {
         if (!key.get(k))
