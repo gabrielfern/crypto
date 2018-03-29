@@ -25,16 +25,16 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    char b, k = 0;
-    while (input >> b)
+    char k, b = 0;
+    while (input.get(b))
     {
-        if (!(key >> k))
+        if (!key.get(k))
         {
             key.clear();
             key.seekg(0);
-            key >> k;
+            key.get(k);
         }
         b ^= k;
-        output << b;
+        output.put(b);
     }
 }
