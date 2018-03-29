@@ -1,5 +1,5 @@
 # This is crypto
-## The simplest program to encrypt/decrypt data
+#### The simplest program to encrypt/decrypt data
 
 # Usage
 #### Simply run
@@ -7,7 +7,10 @@
 #### Where output is a optional file
 #### If no output, encryption/decryption will take in place
 #### Run one time to encrypt, run again to decrypt
+#### Example
+> crypto some_image.png my_secret_document.pdf
 
+---
 
 # Install it with
 > make && sudo make install
