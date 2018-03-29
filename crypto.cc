@@ -7,7 +7,7 @@ int main(int argc, char** argv)
 
     if (argc < 3)
     {
-        cerr << "Missing arguments\n";
+        cerr << "Missing arguments\ncrypto key input [output]\n";
         return 1;
     }
 
