@@ -1,16 +1,16 @@
-## This is crypto
-**The simplest program to encrypt/decrypt data
+# This is crypto
+## The simplest program to encrypt/decrypt data
 
-### Usage
+# Usage
 #### Simply run
 > crypto {file to serve as key} {file to encrypt/decrypt} {output}
 #### Where output is a optional file
-#### if no output, encryption/decryption will take in place
+#### If no output, encryption/decryption will take in place
 #### Run one time to encrypt, run again to decrypt
 
 
-### Install it with
+# Install it with
 > make && sudo make install
 
-### Uninstall it with
+# Uninstall it with
 > sudo make uninstall
