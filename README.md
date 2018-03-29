@@ -1,6 +1,8 @@
 # This is crypto
 #### The simplest program to encrypt/decrypt data
 
+---
+
 # Usage
 #### Simply run
 > crypto {file to serve as key} {file to encrypt/decrypt} {output}
