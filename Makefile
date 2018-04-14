@@ -1,4 +1,4 @@
-crypto: crypto.cc crypto.hh
+crypto: crypto.cc
 	g++ -std=c++14 -o crypto crypto.cc
 
 install: crypto
