@@ -1,36 +1,50 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <string>
 
 
 int main(int argc, char **argv) {
     using namespace std;
 
-    if (argc < 3) {
-        cerr << "Missing arguments\ncrypto key input [output]\n";
+    if (argc < 2) {
+        cerr << "Missing arguments\ncrypto [key] input\n";
         return 1;
     }
 
-    fstream key(argv[1], ios_base::in | ios_base::binary);
-    fstream input(argv[2], ios_base::in | ios_base::binary);
+    fstream input;
     fstream output;
-    if (argc < 4 || string(argv[2]) == argv[3])
-        output = fstream(argv[2], ios_base::in | ios_base::out
-                                | ios_base::binary);
-    else
-        output = fstream(argv[3], ios_base::out | ios_base::binary);
+    stringstream sstream;
+    if (argc < 3) {
+        input = fstream(argv[1], ios_base::in | ios_base::binary);
+        output = fstream(argv[1], ios_base::in | ios_base::out | ios_base::binary);
 
-    if (!key.is_open() || !input.is_open() || !output.is_open()) {
-        cerr << "No such file\n";
-        return 1;
+        if (!input.is_open() || !output.is_open()) {
+            cerr << "No such file\n";
+            return 1;
+        }
+
+        sstream << cin.rdbuf();
+    } else {
+        fstream key(argv[1], ios_base::in | ios_base::binary);
+        input = fstream(argv[2], ios_base::in | ios_base::binary);
+        output = fstream(argv[2], ios_base::in | ios_base::out | ios_base::binary);
+
+        if (!key.is_open() || !input.is_open() || !output.is_open()) {
+            cerr << "No such file\n";
+            return 1;
+        }
+
+        sstream << key.rdbuf();
     }
 
     char k = 0, b;
+    int i = 0;
     while (input.get(b)) {
-        if (!key.get(k)) {
-            key.clear();
-            key.seekg(0);
-            key.get(k);
+        if (sstream.str().length() > 0) {
+            if (i >= sstream.str().length()) i = 0;
+            k = sstream.str()[i];
+            i++;
         }
         b ^= k;
         output.put(b);
